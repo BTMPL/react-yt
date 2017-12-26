@@ -23,8 +23,7 @@ Minimal usage example
 ----
 ```js
 import YouTube from "react-yt"; // for CommonJS format
-import YouTube from "react-yt/dist/esm"; // for ES module format
-import YouTube from "react-yt/src"; // for TypeScript
+import YouTube from "react-yt/lib/esm"; // for ES module format
 ```
 ```js
 <YouTube
