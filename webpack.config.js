@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const cpus = require('os').cpus;
 
 const webpack = require('webpack');
@@ -17,8 +18,8 @@ const HappyPack = require('happypack');
 const webpackConfig = (additionalOptions = {}) => {
 
   const options = Object.assign({}, {
-    outputFolder:'example',
-    environment:'development',
+    outputFolder: 'example',
+    environment: 'development',
     index: false,
     sourceMaps: false,
     debug: false,
@@ -26,7 +27,9 @@ const webpackConfig = (additionalOptions = {}) => {
     hmr: false,
     compress: false,
     minify: false,
-  }, additionalOptions)
+  }, additionalOptions);
+
+  if(options.gh) options.outputFolder = '../gh-pages';
 
   const sourceFolder = path.join(__dirname, 'example');
   const babelOptions = {
@@ -89,8 +92,17 @@ const webpackConfig = (additionalOptions = {}) => {
               module: 'esnext'
             }
           }}
-        ])
+        ])        
       }),
+      options.gh && (() => {
+        try {
+          fs.accessSync(path.join(__dirname, options.outputFolder), fs.R_OK | fs.W_OK);
+        }
+        catch (e) {
+          fs.mkdirSync(path.join(__dirname, options.outputFolder));
+        }
+        fs.copyFileSync(path.join(__dirname, 'example', 'index.html'), path.join(__dirname, options.outputFolder, 'index.html'));
+      })(),
 
       // Optional features
       options.hmr && new NamedModulesPlugin(),

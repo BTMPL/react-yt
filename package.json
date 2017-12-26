@@ -1,6 +1,6 @@
 {
   "name": "react-yt",
-  "version": "0.1.0",
+  "version": "0.1.1-beta0",
   "main": "lib/index.js",
   "description": "A YouTube player component for React following the render props pattern",
   "files": [
@@ -44,6 +44,7 @@
   "scripts": {
     "start": "webpack-dev-server --host 0.0.0.0 --env.index --env.cache --env.stats --env.debug --env.hmr --env.sourceMaps",
     "build:es6": "tsc ./src/index.tsx --outDir lib/ --lib es6,dom --jsx react -m es2015",
+    "build:gh-pages": "webpack --env.gh",
     "prepublish": "yarn build:es6"
   }
 }
