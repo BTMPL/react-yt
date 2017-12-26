@@ -65,12 +65,12 @@ Additionally it's possible to subscribe to the Player events by providing an `ev
 
 Key name|Event signature
 ---|---
-onReady|YT.PlayerEventHandler<YT.PlayerEvent>
-onStateChange|YT.PlayerEventHandler<YT.OnStateChangeEvent>
-onPlaybackQualityChange|YT.PlayerEventHandler<YT.OnPlaybackQualityChangeEvent>
-onPlaybackRateChange|YT.PlayerEventHandler<YT.OnPlaybackRateChangeEvent>
-onError|YT.PlayerEventHandler<YT.OnErrorEvent>
-onApiChange|YT.PlayerEventHandler<YT.PlayerEvent>
+`onReady`|`YT.PlayerEventHandler<YT.PlayerEvent>`
+`onStateChange`|`YT.PlayerEventHandler<YT.OnStateChangeEvent>`
+`onPlaybackQualityChange`|`YT.PlayerEventHandler<YT.OnPlaybackQualityChangeEvent>`
+`onPlaybackRateChange`|`YT.PlayerEventHandler<YT.OnPlaybackRateChangeEvent>`
+`onError`|`YT.PlayerEventHandler<YT.OnErrorEvent>`
+`onApiChange`|`YT.PlayerEventHandler<YT.PlayerEvent>`
 
 ## Using the render prop
 
@@ -85,41 +85,41 @@ And all the internal Youtube player functions:
 
 Function name|Parameters|Return type
 ---|---|---
-loadVideoById|`videoId: string[, startSeconds: number, suggestedQuality: string]`|`void`
-cueVideoByUrl|`videoId: string[, startSeconds: number, suggestedQuality: string]`|`void`
-loadVideoByUrl|`videoUrl: string[, startSeconds: number, suggestedQuality: string]`|`void`
-loadPlaylist|`playlist: string\|Array[, index: number, startSeconds: number, suggestedQuality: string]`|`void`
-cuePlaylist|`playlist: string\|Array[, index: number, startSeconds: number, suggestedQuality: string]`|`void`
-pauseVideo|`void`|`void`
-playVideo|`void`|`void`
-mute|`void`|`void`
-unMute|`void`|`void`
-isMuted|`void`|`boolean`
-setVolume|`number`|`void`
-getVolume|`void`|`number`
-stopVideo|`void`|`void`
-clearVideo|`void`|`void`
-nextVideo|`void`|`void`
-previousVideo|`void`|`void`
-playVideoAt|`number`|`void`
-seekTo|`number`|`void`
-getPlaybackRate|`void`|`number`
-setPlaybackRate|`number`|`void`
-getAvailablePlaybackRates|`void`|`Array<number>`
-setLoop|`boolean`|`void`
-setShuffle|`boolean`|`void`
-getPlayerState|`void`|`number`
-getCurrentTime|`void`|`number`
-getPlaybackQuality|`void`|`string`
-setPlaybackQuality|`string`|`void`
-getVideoLoadedFraction|`void`|`float`
-getDuration|`void`|`number`
-getVideoUrl|`void`|`string`
-getVideoEmbedCode|`void`|`string`
-getPlaylist|`void`|`Array<string>`
-getPlaylistIndex|`void`|`number`
-addEventListener|`string`, `Function`|`void`
-removeEventListener|`string`, `Function`|`void`
+`loadVideoById`|`videoId: string[, startSeconds: number, suggestedQuality: string]`|`void`
+`cueVideoByUrl`|`videoId: string[, startSeconds: number, suggestedQuality: string]`|`void`
+`loadVideoByUrl`|`videoUrl: string[, startSeconds: number, suggestedQuality: string]`|`void`
+`loadPlaylist`|`playlist: string\|Array[, index: number, startSeconds: number, suggestedQuality: string]`|`void`
+`cuePlaylist`|`playlist: string\|Array[, index: number, startSeconds: number, suggestedQuality: string]`|`void`
+`pauseVideo`|`void`|`void`
+`playVideo`|`void`|`void`
+`mute`|`void`|`void`
+`unMute`|`void`|`void`
+`isMuted`|`void`|`boolean`
+`setVolume`|`number`|`void`
+`getVolume`|`void`|`number`
+`stopVideo`|`void`|`void`
+`clearVideo`|`void`|`void`
+`nextVideo`|`void`|`void`
+`previousVideo`|`void`|`void`
+`playVideoAt`|`number`|`void`
+`seekTo`|`number`|`void`
+`getPlaybackRate`|`void`|`number`
+`setPlaybackRate`|`number`|`void`
+`getAvailablePlaybackRates`|`void`|`Array<number>`
+`setLoop`|`boolean`|`void`
+`setShuffle`|`boolean`|`void`
+`getPlayerState`|`void`|`number`
+`getCurrentTime`|`void`|`number`
+`getPlaybackQuality`|`void`|`string`
+`setPlaybackQuality`|`string`|`void`
+`getVideoLoadedFraction`|`void`|`float`
+`getDuration`|`void`|`number`
+`getVideoUrl`|`void`|`string`
+`getVideoEmbedCode`|`void`|`string`
+`getPlaylist`|`void`|`Array<string>`
+`getPlaylistIndex`|`void`|`number`
+`addEventListener`|`string`, `Function`|`void`
+`removeEventListener`|`string`, `Function`|`void`
 
 ## Rendering with render props
 
