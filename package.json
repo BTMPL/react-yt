@@ -15,6 +15,10 @@
     "filter",
     "react"
   ],  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BTMPL/react-yt.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^8.5.2",
@@ -40,6 +44,6 @@
   "scripts": {
     "start": "webpack-dev-server --host 0.0.0.0 --env.index --env.cache --env.stats --env.debug --env.hmr --env.sourceMaps",
     "build:es6": "tsc ./src/index.tsx --outDir lib/ --lib es6,dom --jsx react -m es2015",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build:es6"
   }
 }
