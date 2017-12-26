@@ -88,8 +88,8 @@ Function name|Parameters|Return type
 loadVideoById|`videoId: string[, startSeconds: number, suggestedQuality: string]`|`void`
 cueVideoByUrl|`videoId: string[, startSeconds: number, suggestedQuality: string]`|`void`
 loadVideoByUrl|`videoUrl: string[, startSeconds: number, suggestedQuality: string]`|`void`
-loadPlaylist|`playlist: string|Array[, index: number, startSeconds: number, suggestedQuality: string]`|`void`
-cuePlaylist|`playlist: string|Array[, index: number, startSeconds: number, suggestedQuality: string]`|`void`
+loadPlaylist|`playlist: string\|Array[, index: number, startSeconds: number, suggestedQuality: string]`|`void`
+cuePlaylist|`playlist: string\|Array[, index: number, startSeconds: number, suggestedQuality: string]`|`void`
 pauseVideo|`void`|`void`
 playVideo|`void`|`void`
 mute|`void`|`void`
