@@ -121,6 +121,26 @@ getPlaylistIndex|`void`|`number`
 addEventListener|`string`, `Function`|`void`
 removeEventListener|`string`, `Function`|`void`
 
+## Rendering with render props
+
+```js
+<YouTube
+  videoId={'SKGzIhOSQVY'}
+  render={(
+    iframe,
+    playVideo,
+    pauseVideo,
+    getPlayerState
+  ) => (
+    <div>
+      {iframe}
+      {getPlayerState() !== 1 && <button onClick={(event) => playVideo()}>Play video</button>}
+      {getPlayerState() === 1 && <button onClick={(event) => pauseVideo()}>Pause video</button>}
+    </div>
+  )}
+/>
+```
+
 ## Controlling the player from outside
 
 While the recommended way to control the playback is from inside the render prop function, it is also possible to control the component from outside by changing the props. Developers are able to provide the following props in order to control the component without having to remount it.
