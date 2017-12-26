@@ -22,8 +22,11 @@ $ yarn add react-yt
 Minimal usage example
 ----
 ```js
-import YouTube from "react-yt"; // for CommonJS format
-import YouTube from "react-yt/lib/esm"; // for ES module format
+/**
+ * We are using `module` field to provide an ES module format
+ * and `main` field for an CommonJS fallback
+ */
+import YouTube from "react-yt";
 ```
 ```js
 <YouTube

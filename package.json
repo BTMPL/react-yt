@@ -1,12 +1,14 @@
 {
   "name": "react-yt",
-  "version": "0.1.1-beta2",
+  "version": "0.1.1-beta3",
+  "module": "lib/esm/index.js",
   "main": "lib/cjs/index.js",
+  "types": "lib/esm/react-yt.d.ts",
   "description": "A YouTube player component for React following the render props pattern",
   "files": [
     "lib",
     "src"
-  ],  
+  ],
   "keywords": [
     "react",
     "youtube",
@@ -14,7 +16,7 @@
     "typescript",
     "filter",
     "react"
-  ],  
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/BTMPL/react-yt.git"
@@ -23,7 +25,8 @@
   "devDependencies": {
     "@types/node": "^8.5.2",
     "@types/react": "^16.0.31",
-    "@types/react-dom": "^16.0.3",    
+    "@types/react-dom": "^16.0.3",
+    "dts-generator": "^2.1.0",
     "fork-ts-checker-webpack-plugin": "^0.2.10",
     "happypack": "^4.0.0",
     "prop-types": "^15.6.0",
@@ -45,7 +48,8 @@
     "start": "webpack-dev-server --host 0.0.0.0 --env.index --env.cache --env.stats --env.debug --env.hmr --env.sourceMaps",
     "build:esm": "tsc ./src/index.tsx --outDir lib/esm --lib es6,dom --jsx react -m es2015",
     "build:cjs": "tsc ./src/index.tsx --outDir lib/cjs --lib es6,dom --jsx react -m commonjs",
+    "build:dts": "dts-generator --name react-yt --project . --out lib/esm/react-yt.d.ts --main react-yt/index",
     "build:gh-pages": "webpack --env.gh",
-    "prepublish": "yarn build:esm && yarn build:cjs"
+    "prepublish": "yarn build:esm && yarn build:cjs && yarn build:dts"
   }
 }

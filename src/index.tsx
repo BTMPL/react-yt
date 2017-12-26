@@ -68,7 +68,7 @@ export type RenderFunction = {
   }): React.ReactNode;
 };
 
-type GetPlaylistFunction = {
+export type GetPlaylistFunction = {
   (): Array<string>;
 };
 
@@ -107,7 +107,7 @@ export type YoutubeProps = {
   };
 };
 
-type YoutubeState = {
+export type YoutubeState = {
   playerName: string;
 
   isMuted: boolean;
