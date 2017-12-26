@@ -39,27 +39,27 @@ The player accepts all the official [player parameters](https://developers.googl
 
 Prop name|TypeScript type|Accepted values
 ---|---|---
-autoplay|YT.AutoPlay|0 \| 1
-ccLoadPolicy|YT.ClosedCaptionsLoadPolicy|0 \| 1
-color | YT.ProgressBarColor|"white" \| "red"
-controls | YT.Controls|0 \| 1
-disablekb | YT.KeyboardControls|0 \| 1
-enableJsApi | YT.JsApi|0 \| 1
-end | number|number
-fs | YT.FullscreenButton|0 \| 1
-hl | string|ISO 639-1 languag code
-ivLoadPolicy | YT.IvLoadPolicy|0 \| 1
-list | string|string
-listType | ListType|"playlist" \| "user_uploads" \| "search"
-loop | YT.Loop|0 \| 1
-modestbranding | YT.ModestBranding|0 \| 1
-origin | string|string
-playlist | string|string
-playsinline | YT.PlaysInline|0 \| 1
-rel | YT.RelatedVideos|0 \| 1
-showinfo | YT.ShowInfo|0 \| 1
-start | number|number
-videoId | string|string
+`autoplay`|`YT.AutoPlay`|`0 \| 1`
+`ccLoadPolicy`|`YT.ClosedCaptionsLoadPolicy`|`0 \| 1`
+`color` | `YT.ProgressBarColor`|`"white" \| "red"`
+`controls` | `YT.Controls`|`0 \| 1`
+`disablekb` | `YT.KeyboardControls`|`0 \| 1`
+`enableJsApi` | `YT.JsApi`|`0 \| 1`
+`end` | `number`|`number`
+`fs` | `YT.FullscreenButton`|`0 \| 1`
+`hl` | `string`|ISO 639-1 languag code
+`ivLoadPolicy` | `YT.IvLoadPolicy`|`0 \| 1`
+`list` | `string`|`string`
+`listType` | `ListType`|`"playlist" \| "user_uploads" \| "search"`
+`loop` | `YT.Loop`|`0 \| 1`
+`modestbranding` | `YT.ModestBranding`|`0 \| 1`
+`origin` | `string`|`string`
+`playlist` | `string`|`string`
+`playsinline` | `YT.PlaysInline`|`0 \| 1`
+`rel` | `YT.RelatedVideos`|`0 \| 1`
+`showinfo` | `YT.ShowInfo`|`0 \| 1`
+`start` | `number`|`number`
+`videoId` | `string`|`string`
 
 Additionally it's possible to subscribe to the Player events by providing an `events` prop with following keys:
 
