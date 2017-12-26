@@ -126,12 +126,12 @@ removeEventListener|`string`, `Function`|`void`
 ```js
 <YouTube
   videoId={'SKGzIhOSQVY'}
-  render={(
+  render={({
     iframe,
     playVideo,
     pauseVideo,
     getPlayerState
-  ) => (
+  }) => (
     <div>
       {iframe}
       {getPlayerState() !== 1 && <button onClick={(event) => playVideo()}>Play video</button>}
