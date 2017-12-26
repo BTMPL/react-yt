@@ -73,25 +73,25 @@ type GetPlaylistFunction = {
 };
 
 export type YoutubeProps = {
-  autoplay?: boolean | number;
-  ccLoadPolicy?: boolean | number;
+  autoplay?: YT.AutoPlay;
+  ccLoadPolicy?: YT.ClosedCaptionsLoadPolicy;
   color?: YT.ProgressBarColor;
   controls?: YT.Controls;
-  disablekb?: boolean | number;
-  enableJsApi?: boolean | number;
+  disablekb?: YT.KeyboardControls;
+  enableJsApi?: YT.JsApi;
   end?: number;
-  fs?: boolean | number;
+  fs?: YT.FullscreenButton;
   hl?: string;
   ivLoadPolicy?: YT.IvLoadPolicy;
   list?: string;
   listType?: ListType;
-  loop?: boolean;
-  modestbranding?: boolean | number;
+  loop?: YT.Loop;
+  modestbranding?: YT.ModestBranding;
   origin?: string;
   playlist?: string;
-  playsinline?: boolean | number;
-  rel?: boolean | number;
-  showinfo?: boolean | number;
+  playsinline?: YT.PlaysInline;
+  rel?: YT.RelatedVideos;
+  showinfo?: YT.ShowInfo;
   start?: number;
   videoId?: string;
 
@@ -99,11 +99,11 @@ export type YoutubeProps = {
 
   events?: {
     onReady?: YT.PlayerEventHandler<YT.PlayerEvent>;
-    onStateChange?: Function;
-    onPlaybackQualityChange?: Function;
-    onPlaybackRateChange?: Function;
-    onError?: Function;
-    onApiChange?: Function;
+    onStateChange?: YT.PlayerEventHandler<YT.OnStateChangeEvent>;
+    onPlaybackQualityChange?: YT.PlayerEventHandler<YT.OnPlaybackQualityChangeEvent>;
+    onPlaybackRateChange?: YT.PlayerEventHandler<YT.OnPlaybackRateChangeEvent>;
+    onError?: YT.PlayerEventHandler<YT.OnErrorEvent>;
+    onApiChange?: YT.PlayerEventHandler<YT.PlayerEvent>;
   };
 };
 

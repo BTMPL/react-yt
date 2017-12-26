@@ -105,7 +105,7 @@ const App = () => {
     <Youtube 
       videoId={'SKGzIhOSQVY'}
       controls={0}
-      modestbranding={1}
+      modestbranding={0}
       showinfo={0}
       rel={0}
       render={({
