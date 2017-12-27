@@ -1,6 +1,6 @@
 {
   "name": "react-yt",
-  "version": "0.1.1-beta3",
+  "version": "0.1.2",
   "module": "lib/esm/index.js",
   "main": "lib/cjs/index.js",
   "types": "lib/esm/react-yt.d.ts",
