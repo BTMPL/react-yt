@@ -14,57 +14,70 @@ export enum ListType {
 export type RenderFunction = {
   (params: {
     iframe: JSX.Element,
+    player: YT.Player,
 
-    loadVideoById: Function,
-    cueVideoByUrl: Function,
-    loadVideoByUrl: Function,
-    loadPlaylist: Function,
-    cuePlaylist: Function,
+    loadVideoById(videoId: string, startSeconds?: number, suggestedQuality?: YT.SuggestedVideoQuality): void,
+    cueVideoById(videoId: string, startSeconds?: number, suggestedQuality?: YT.SuggestedVideoQuality): void,
+    loadVideoByUrl(mediaContentUrl: string, startSeconds?: number, suggestedQuality?: YT.SuggestedVideoQuality): void,
+    loadPlaylist(
+      playlist: string | string[], 
+      index?: number, 
+      startSeconds?: number, 
+      suggestedQuality?: YT.SuggestedVideoQuality
+    ): void,
+    cuePlaylist(
+      playlist: string | string[], 
+      index?: number, 
+      startSeconds?: number, 
+      suggestedQuality?: YT.SuggestedVideoQuality
+    ): void,
+    pauseVideo(): void,
+    playVideo(): void,
+    mute(): void,
+    unMute(): void,
+    isMuted(): boolean,
+    setVolume(volume: number): void,
+    getVolume(): number,
 
-    pauseVideo: Function,
-    playVideo: Function,
-    mute: Function,
-    unMute: Function,
-    isMuted: Function,
-    setVolume: Function,
-    getVolume: Function,
+    stopVideo(): void,
+    clearVideo(): void,
 
-    stopVideo: Function,
-    clearVideo: Function,
-
-    nextVideo: Function,
-    previousVideo: Function,
-    playVideoAt: Function,  
+    nextVideo(): void,
+    previousVideo(): void,
+    playVideoAt(index: number): void,  
     
-    seekTo: Function,
+    seekTo(seconds: number, allowSeekAhead: boolean): void,
 
-    getPlaybackRate: Function,
-    setPlaybackRate: Function,
+    getPlaybackRate(): number,
+    setPlaybackRate(suggestedRate: number): void;
 
-    getAvailablePlaybackRates: Function,
+    getAvailablePlaybackRates(): number[],
 
-    setLoop: Function,
-    setShuffle: Function,
+    setLoop(loop: boolean): void,
+    setShuffle(shuffle: boolean): void,
 
-    getPlayerState: Function,
-    getCurrentTime: Function,
+    getPlayerState(): YT.PlayerState,
+    getCurrentTime(): number,
 
-    getPlaybackQuality: Function,
-    setPlaybackQuality: Function,
+    getPlaybackQuality(): YT.SuggestedVideoQuality,
+    setPlaybackQuality(suggestedQuality: YT.SuggestedVideoQuality): void,
 
-    getVideoLoadedFraction: Function,
-    getDuration: Function,
-    getVideoUrl: Function,
-    getVideoEmbedCode: Function,
+    getVideoLoadedFraction(): number,
+    getDuration(): number,
+    getVideoUrl(): string,
+    getVideoEmbedCode(): string,
 
-    getPlaylist: GetPlaylistFunction,
-    getPlaylistIndex: Function,
+    getPlaylist(): string[],
+    getPlaylistIndex(): number,
 
-    addEventListener: Function,
-    removeEventListener: Function,
-
-    player: YT.Player
-
+    addEventListener<TEvent extends YT.PlayerEvent>(
+      eventName: keyof YT.Events, 
+      listener: (event: TEvent) => void
+    ): void,
+    removeEventListener<TEvent extends YT.PlayerEvent>(
+      eventName: keyof YT.Events, 
+      listener: (event: TEvent) => void
+    ): void,
   }): React.ReactNode;
 };
 
@@ -114,7 +127,7 @@ export type YoutubeState = {
   volume: number;
   availablePlaybackRates: Array<number>;
   playbackRate: number;
-  playbackQuality: string;
+  playbackQuality: YT.SuggestedVideoQuality;
   currentTime: number;
   duration: number;
   videoUrl: string;
@@ -153,21 +166,24 @@ export default class YoutubePlayer extends React.Component<YoutubeProps, Youtube
   callbackObject = {
     iframe: <div id={this.state.playerName} />,
 
-    loadVideoById: (videoId: string, start: number, quality: string) => {
+    loadVideoById: (videoId: string, start: number, quality: YT.SuggestedVideoQuality) => {
       this.proxyToPlayer('loadVideoById', [videoId, start, quality]);
     },
-    cueVideoByUrl: (videoId: string, start: number, quality: string) => {
-      this.proxyToPlayer('loadVideoById', [videoId, start, quality]);
+    cueVideoById: (videoId: string, start: number, quality: YT.SuggestedVideoQuality) => {
+      this.proxyToPlayer('cueVideoById', [videoId, start, quality]);
     },
-    loadVideoByUrl: (videoUrl: string, start: number, quality: string) => {
+    loadVideoByUrl: (videoUrl: string, start: number, quality: YT.SuggestedVideoQuality) => {
       this.proxyToPlayer('videoUrl', [videoUrl, start, quality]);
+    },        
+    cueVideoByUrl: (videoId: string, start: number, quality: YT.SuggestedVideoQuality) => {
+      this.proxyToPlayer('loadVideoById', [videoId, start, quality]);
     },
 
     loadPlaylist: (
       playlistIdOrItems: string | Array<string>, 
       index: number, 
       start: number, 
-      quality: string
+      quality: YT.SuggestedVideoQuality
     ) => {
       if (typeof playlistIdOrItems === 'string') {
         this.proxyToPlayer('loadPlaylist', [{
@@ -181,7 +197,12 @@ export default class YoutubePlayer extends React.Component<YoutubeProps, Youtube
         this.proxyToPlayer('loadPlaylist', [playlistIdOrItems, index, start, quality]);
       }
     },
-    cuePlaylist: (playlistId: string | Array<string>, index: number, start: number, quality: string) => {
+    cuePlaylist: (
+      playlistId: string | Array<string>, 
+      index: number, 
+      start: number, 
+      quality: YT.SuggestedVideoQuality
+    ) => {
       this.proxyToPlayer('cuePlaylist', [playlistId, index, start, quality]);
     },
 
@@ -231,7 +252,7 @@ export default class YoutubePlayer extends React.Component<YoutubeProps, Youtube
     getCurrentTime: () => this.state.currentTime,
 
     getPlaybackQuality: () => this.state.playbackQuality,
-    setPlaybackQuality: (quality: string) => {
+    setPlaybackQuality: (quality: YT.SuggestedVideoQuality) => {
       this.proxyToPlayer('setPlaybackQuality', [quality]);
       this.setState({ playbackQuality: quality });         
     },
